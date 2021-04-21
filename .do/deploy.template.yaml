@@ -1,0 +1,15 @@
+name: uug-demo-web-app
+region: nyc
+services:
+- environment_slug: node-js
+  github:
+    branch: main
+    deploy_on_push: true
+    repo_clone_url: funkybunch/uug-demo-api
+  http_port: 3000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: uug-demo-api
+  routes:
+  - path: /api
+  run_command: npm start
