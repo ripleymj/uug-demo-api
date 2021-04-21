@@ -10,8 +10,8 @@ Make sure you have [Node JS](https://nodejs.org/en/download/) installed already.
 Once the project is installed, run `npm start` in your working directory.
 
 This should start the web server at `http://localhost:3000`.  You should have two working endpoints:
-1. `[http://localhost:3000/](http://localhost:3000)` - Directory of all endpoints.
-2. `[http://localhost:3000/earthquakes/latest](http://localhost:3000/earthquakes/latest)` - JSON endpoint showing data from the latest earthquake in the U.S.
+1. [http://localhost:3000/](http://localhost:3000) - Directory of all endpoints.
+2. [http://localhost:3000/earthquakes/latest](http://localhost:3000/earthquakes/latest) - JSON endpoint showing data from the latest earthquake in the U.S.
 
 ## 3. Deploying
 This repository can be deployed quickly using the DigitalOcean App Platform.
