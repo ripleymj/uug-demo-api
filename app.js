@@ -13,7 +13,7 @@ let earthquakesRouter = require('./routes/earthquakes');
 let app = express();
 
 let allowedOrigins = [
-    'http://localhost:8080'
+    '*'
 ];
 app.use(cors({
     origin: function(origin, callback){
