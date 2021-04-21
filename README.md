@@ -30,7 +30,7 @@ services:
   github:
     branch: main
     deploy_on_push: true
-    repo_clone_url: funkybunch/uug-demo-api
+    repo: funkybunch/uug-demo-api
   http_port: 3000
   instance_count: 1
   instance_size_slug: basic-xxs
