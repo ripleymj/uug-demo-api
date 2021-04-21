@@ -25,10 +25,6 @@ You can deploy to the app platform using the button below, or by configuring you
 ```yaml
 name: uug-demo-web-app
 region: nyc
-envs:
-- key: NODE_ENV
-  scope: RUN_AND_BUILD_TIME
-  value: production
 services:
 - environment_slug: node-js
   github:
