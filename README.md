@@ -22,3 +22,20 @@ You can deploy to the app platform using the button below, or by configuring you
 [![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/funkybunch/uug-demo-api/tree/main&refcode=faff5fb54b80)
 
 ### 3.2 Custom Deployment & Configuration
+```yaml
+name: uug-demo-web-app
+region: nyc
+services:
+- environment_slug: node-js
+  github:
+    branch: main
+    deploy_on_push: true
+    repo_clone_url: funkybunch/uug-demo-api
+  http_port: 3000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: uug-demo-api
+  routes:
+  - path: /api
+  run_command: npm start
+```
