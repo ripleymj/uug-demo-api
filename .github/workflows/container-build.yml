@@ -46,7 +46,5 @@ jobs:
       image: ghcr.io/ripleymj/uug-demo-api:latest
     steps:
       - run: |
-          echo This job does specify a container.
-          echo It runs in the container instead of the VM.
-          curl localhost
+          curl http://localhost:3000
         name: Run in container
