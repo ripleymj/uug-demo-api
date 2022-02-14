@@ -1,4 +1,7 @@
 name: Build uug-demo-api container
+env:
+  IMAGE_NAME: uug-demo-api
+  REGISTRY: ghcr.io/ripleymj
 on:
   - push
 
@@ -6,11 +9,7 @@ jobs:
   build:
     name: Build image
     runs-on: ubuntu-latest
-    env:
-      IMAGE_NAME: uug-demo-api
-      REGISTRY: ghcr.io/ripleymj
     steps:
-
       - name: Clone the repository
         uses: actions/checkout@v2
 
@@ -41,8 +40,10 @@ jobs:
       - name: Print image URL
         run: echo "Image pushed to ${{ steps.push-to-ghcr.outputs.registry-paths }}"
   test:
+    needs: build
     runs-on: ubuntu-latest
-    container: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+    container:
+      image: ghcr.io/ripleymj/uug-demo-api:latest
     steps:
       - run: |
           echo This job does specify a container.
