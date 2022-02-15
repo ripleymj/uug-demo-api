@@ -52,6 +52,7 @@ jobs:
           - 3000:3000
     steps:
       - run: |
+          sleep 5
           curl http://localhost:3000
           curl http://localhost:3000/earthquakes/latest
         name: Test fetching from container
