@@ -76,6 +76,8 @@ jobs:
       - run: |
           cat k8s/application.yaml
       - run: |
+          git config --global user.email "bot@github.com"
+          git config --global user.name "GitHub Bot"
           git add k8s/application.yaml
           git commit -m "Publish new image"
           git push 
