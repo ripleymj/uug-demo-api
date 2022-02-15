@@ -40,6 +40,7 @@ jobs:
       - name: Print image URL
         run: echo "Image pushed to ${{ steps.push-to-ghcr.outputs.registry-paths }}"
   test:
+    name: Test Image
     needs: build
     runs-on: ubuntu-latest
     services:
@@ -51,6 +52,23 @@ jobs:
           - 3000:3000
     steps:
       - run: |
-          sleep 10
           curl http://localhost:3000
+          curl http://localhost:3000/earthquakes/latest
         name: Test fetching from container
+  publish:
+    name: Publish Updated Image
+    needs: test
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v2
+      - name: Setup nginx
+        uses: cuchi/jinja2-action@v1.2.0
+        with:
+          template: application.yaml.j2
+          output_file: k8s/application.yaml
+          strict: true
+          variables: |
+            version=${{ github.sha }}
+      - run: |
+          cat k8s/application.yaml
+  
