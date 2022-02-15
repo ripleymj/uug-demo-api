@@ -58,6 +58,7 @@ jobs:
   publish:
     name: Publish Updated Image
     needs: test
+    runs-on: ubuntu-latest
     steps:
       - name: Clone the repository
         uses: actions/checkout@v2
