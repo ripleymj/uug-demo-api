@@ -47,7 +47,10 @@ jobs:
       uug-demo-api:
         # Docker Hub image
         image: ghcr.io/ripleymj/uug-demo-api:latest
+        ports:
+          - 3000:3000
     steps:
       - run: |
+          sleep 10
           curl http://localhost:3000
-        name: Run in container
+        name: Test fetching from container
