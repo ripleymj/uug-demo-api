@@ -3,7 +3,7 @@ env:
   IMAGE_NAME: uug-demo-api
   REGISTRY: ghcr.io/ripleymj
 on:
-  - push
+  - push:
       paths-ignore:
         - 'k8s/**'
 
