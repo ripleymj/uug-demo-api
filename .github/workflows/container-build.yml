@@ -42,8 +42,11 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/ripleymj/uug-demo-api:latest
+    services:
+      # Label used to access the service container
+      uug-demo-api:
+        # Docker Hub image
+        image: ghcr.io/ripleymj/uug-demo-api:latest
     steps:
       - run: |
           curl http://localhost:3000

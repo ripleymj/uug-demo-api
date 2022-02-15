@@ -3,5 +3,5 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y -qq --no-install
 COPY api/ /uug-demo-api/
 WORKDIR /uug-demo-api
 RUN npm install
-EXPOSE 80
+EXPOSE 3000
 ENTRYPOINT ["npm", "start"]
