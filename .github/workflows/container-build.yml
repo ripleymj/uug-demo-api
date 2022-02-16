@@ -68,16 +68,16 @@ jobs:
       - name: Setup nginx
         uses: cuchi/jinja2-action@v1.2.0
         with:
-          template: application.yaml.j2
-          output_file: k8s/application.yaml
+          template: deployment.yaml.j2
+          output_file: k8s/deployment.yaml
           strict: true
           variables: |
             version=${{ github.sha }}
       - run: |
-          cat k8s/application.yaml
+          cat k8s/deployment.yaml
       - run: |
           git config --global user.email "bot@github.com"
           git config --global user.name "GitHub Bot"
-          git add k8s/application.yaml
+          git add k8s/deployment.yaml
           git commit -m "Publish new image"
           git push 
