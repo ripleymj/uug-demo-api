@@ -16,12 +16,6 @@ This should start the web server at `http://localhost:3000`.  You should have tw
 ## 3. Deploying
 This repository can be deployed quickly using the DigitalOcean App Platform.
 
-### 3.1 Automatic Deployment & Configuration
-You can deploy to the app platform using the button below, or by configuring your app spec using the guide in [Section 3.2](#Section-3.2).
-
-[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/funkybunch/uug-demo-api/tree/main&refcode=faff5fb54b80)
-
-### 3.2 Custom Deployment & Configuration
 ```yaml
 name: uug-demo-web-app
 region: nyc
