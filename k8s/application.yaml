@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guestbook-ui
+  name: uug-demo-api
 spec:
   replicas: 1
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: guestbook-ui
+      app: uug-demo-api
   template:
     metadata:
       labels:
-        app: guestbook-ui
+        app: uug-demo-api
     spec:
       containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:b990ec19ff069360668987ca4aeed4e2abb6a4bf
-        name: guestbook-ui
+      - image: ghcr.io/ripleymj/uug-demo-api:569af17a16a60be02df8e4b1233e0cafe79035b1
+        name: uug-demo-api
         ports:
-        - containerPort: 80
+        - containerPort: 3000
