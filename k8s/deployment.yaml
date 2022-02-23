@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,7 +14,7 @@ spec:
         app: uug-demo-api
     spec:
       containers:
-      - image: ghcr.io/ripleymj/uug-demo-api:f28940fedf281acad7646981ace4c0be4679d1a7
-        name: uug-demo-api
-        ports:
-        - containerPort: 3000
+        - image: 'ghcr.io/ripleymj/uug-demo-api:c3690d1c18a1bc83e015158adfc1028baf1a86f9'
+          name: uug-demo-api
+          ports:
+            - containerPort: 3000
