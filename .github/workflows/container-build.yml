@@ -26,7 +26,7 @@ jobs:
           yamllint k8s/service.yaml k8s/ingress.yaml deployment.yaml.j2
       - name: Fetch and untar kubeval
         run: |
-          wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
+          wget -nv https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
           tar zxf kubeval-linux-amd64.tar.gz
       - name: Run kubeval
         run: |
@@ -90,14 +90,17 @@ jobs:
     steps:
       - name: Clone the repository
         uses: actions/checkout@v2
-      - name: Setup nginx
-        uses: cuchi/jinja2-action@v1.2.0
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
         with:
-          template: deployment.yaml.j2
-          output_file: k8s/deployment.yaml
-          strict: true
-          variables: |
-            version=${{ github.sha }}
+          python-version: 3.x
+      - name: Install dependencies
+        run: |
+          pip3 install j2cli
+      - name: Run Jinja
+        run: j2 -o k8s/deployment.yaml deployment.yaml.j2
+        env:
+          version=${{ github.sha }}
       - run: |
           cat k8s/deployment.yaml
       - run: |
