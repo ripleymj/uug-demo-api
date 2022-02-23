@@ -8,9 +8,34 @@ on:
       - 'k8s/**'
 
 jobs:
+  check:
+    name: Run repo lint and sanity checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v2
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Install dependencies
+        run: |
+          pip3 install yamllint
+      - name: Run actions yamllint
+        run: |
+          yamllint k8s/*.yaml
+      - name: Fetch and untar kubeval
+        run: |
+          wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
+          tar zxf kubeval-linux-amd64.tar.gz
+      - name: Run kubeval
+        run: |
+          ./kubeval k8s/deployment.yaml
+          ./kubeval k8s/service.yaml
   build:
     name: Build image
     runs-on: ubuntu-latest
+    needs: check
     steps:
       - name: Clone the repository
         uses: actions/checkout@v2
