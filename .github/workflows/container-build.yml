@@ -100,7 +100,7 @@ jobs:
       - name: Run Jinja
         run: j2 -o k8s/deployment.yaml deployment.yaml.j2
         env:
-          version=${{ github.sha }}
+          version: ${{ github.sha }}
       - run: |
           cat k8s/deployment.yaml
       - run: |
