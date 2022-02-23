@@ -8,10 +8,10 @@ spec:
   rules:
     - http:
         paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: uug-demo-api
-              port:
-                number: 3000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: uug-demo-api
+                port:
+                  number: 3000

@@ -23,14 +23,14 @@ jobs:
           pip3 install yamllint
       - name: Run actions yamllint
         run: |
-          yamllint k8s/*.yaml
+          yamllint k8s/service.yaml k8s/ingress.yaml deployment.yaml.j2
       - name: Fetch and untar kubeval
         run: |
           wget https://github.com/instrumenta/kubeval/releases/latest/download/kubeval-linux-amd64.tar.gz
           tar zxf kubeval-linux-amd64.tar.gz
       - name: Run kubeval
         run: |
-          ./kubeval k8s/deployment.yaml
+          ./kubeval deployment.yaml.j2
           ./kubeval k8s/service.yaml
   build:
     name: Build image
